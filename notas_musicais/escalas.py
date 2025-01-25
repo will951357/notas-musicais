@@ -2,7 +2,7 @@ NOTAS = 'C C# D D# E F F# G G# A A# B'.split()
 ESCALAS = {'maior': (0, 2, 4, 5, 7, 9, 11)}
 
 
-def escalas(tonica: str, tonalizade: str):
+def escala(tonica: str, tonalidade: str):
     """
     Gera uma escala a partir de uma tônica e uma tonalidade.
 
@@ -10,16 +10,28 @@ def escalas(tonica: str, tonalizade: str):
         tonica: Nota que será a tônica da escala
         tonica: Tonalidade da escala
     
+    Raises:
+        ValueError: Caso a tônica não seja válida
+
     Examples:
-        >>> escalas('C', 'maior')
+        >>> escala('C', 'maior')
         {'notas': ['C', 'D', 'E', 'F', 'G', 'A', 'B'], 'graus': ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']}
 
-        >>> escalas('A', 'maior')
+        >>> escala('a', 'maior')
         {'notas': ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'], 'graus': ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']}
 
     """
-    intervalos = ESCALAS[tonalizade]
-    tonica_pos = NOTAS.index(tonica)
+    try:
+
+        intervalos = ESCALAS[tonalidade]
+    except KeyError:
+        raise KeyError(f'Essa tonalidade não existe ou não foi implemetada. Tente uma dessa {list(ESCALAS.keys())}')
+
+    try:
+        tonica_pos = NOTAS.index(tonica.upper())
+    except ValueError:
+        raise ValueError(f"Essa nota não existe, tente uma dessas {NOTAS}")
+    
     temp = []
 
     for intervalo in intervalos:    
