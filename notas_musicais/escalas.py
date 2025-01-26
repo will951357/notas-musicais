@@ -8,7 +8,7 @@ def escala(tonica: str, tonalidade: str):
 
     Args:
         tonica: Nota que será a tônica da escala
-        tonica: Tonalidade da escala
+        tonalidade: Tonalidade da escala
     
     Raises:
         ValueError: Caso a tônica não seja válida
@@ -19,10 +19,8 @@ def escala(tonica: str, tonalidade: str):
 
         >>> escala('a', 'maior')
         {'notas': ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'], 'graus': ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']}
-
     """
     try:
-
         intervalos = ESCALAS[tonalidade]
     except KeyError:
         raise KeyError(f'Essa tonalidade não existe ou não foi implemetada. Tente uma dessa {list(ESCALAS.keys())}')
