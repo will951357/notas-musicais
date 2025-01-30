@@ -1,1 +1,4 @@
+
+# Escalas
+
 ::: escalas
