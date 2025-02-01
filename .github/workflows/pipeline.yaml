@@ -16,11 +16,13 @@ jobs:
           Get-ComputerInfo | Select-Object WindowsVersion, OsArchitecture
         shell: powershell
 
-      - name: Roda outro comando
-        run: echo $PWD
-        shell: powershell
-
       - name: Instala o Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
+      - name: Instalar Poetry
+        run: pip install poetry
+      
+      - name: Instalar dependencias do projeto
+        run: poetry install --without doc
