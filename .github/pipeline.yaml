@@ -18,3 +18,8 @@ jobs:
       
       - name: Roda outro comando
         run: echo $PWD
+
+      - name: Instala o Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13' 
