@@ -1,0 +1,20 @@
+name: Pipeline
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+
+      - name: Configurar ambiente
+          run: |
+            echo "Configurando o ambiente no Windows"
+            Get-ComputerInfo | Select-Object WindowsVersion, OsArchitecture
+          shell: powershell
+
+      - name: Copia os arquivos
+        uses: actions/checkout@v4
+      
+      - name: Roda outro comando
+        run: echo $PWD
